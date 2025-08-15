@@ -241,20 +241,6 @@ cvcraft/
 └── coverage/                # Test coverage reports
 ```
 
-## Contributing
-
-We welcome contributions! Here's how to get started:
-
-1. **Fork** the repository
-2. **Clone** your fork: `git clone https://github.com/jackkeller/cvcraft.git`
-3. **Install** dependencies: `bun install` (or `npm install`)
-4. **Create** a feature branch: `git checkout -b feature/amazing-feature`
-5. **Make** your changes and add tests
-6. **Test** your changes: `bun run test`
-7. **Commit** your changes: `git commit -m 'Add amazing feature'`
-8. **Push** to your branch: `git push origin feature/amazing-feature`
-9. **Open** a Pull Request
-
 ### Development Guidelines
 
 - **TypeScript** - All code should be properly typed
@@ -274,18 +260,14 @@ phone: '+1 (555) 123-4567'
 website: 'https://janesmith.dev'
 ---
 
-# Jane Smith
-
 ## Experience
 
 **Senior Software Engineer** | Tech Corp | 2021-2024
-
 - Led development of microservices architecture
 - Mentored junior developers and conducted code reviews
 - Improved system performance by 40%
 
 **Software Engineer** | StartupCo | 2019-2021
-
 - Built responsive web applications using React and Node.js
 - Collaborated with design team on user experience improvements
 
@@ -316,7 +298,7 @@ website: 'https://janesmith.dev'
 
 **Web interface not starting:**
 
-- Ensure ports 3000 and 3001 are available
+- Ensure ports 5173 and 3001 are available
 - Try `bun run api` separately to isolate issues
 
 ## License
