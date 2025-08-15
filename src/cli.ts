@@ -10,6 +10,7 @@ import * as fs from 'fs-extra';
 import * as path from 'path';
 import { convertMarkdownToPDF } from './converter';
 import { ThemeManager } from './themes';
+import { CSSThemeManager } from './css-theme-manager';
 import { config } from './config';
 
 interface CLIOptions {
@@ -23,7 +24,26 @@ interface CLIOptions {
 }
 
 const program = new Command();
-const themeManager = new ThemeManager();
+
+// Function to get the correct themes directory path
+function getThemesDirectory(): string {
+  // When installed globally, themes are in the package directory
+  // When running locally, themes are in the project root
+  const packageDir = path.dirname(path.dirname(__filename)); // Go up from dist/ to package root
+  const globalThemesPath = path.join(packageDir, 'themes');
+  const localThemesPath = path.resolve('themes');
+
+  // Check if global themes path exists (for npm installed package)
+  if (fs.existsSync(globalThemesPath)) {
+    return globalThemesPath;
+  }
+
+  // Fall back to local themes path
+  return localThemesPath;
+}
+
+const cssThemeManager = new CSSThemeManager(getThemesDirectory());
+const themeManager = new ThemeManager(cssThemeManager);
 
 program
   .name(config.getCliName())
@@ -71,7 +91,8 @@ program
       // Normalize word format
       const normalizedFormat = outputFormat === 'docx' ? 'word' : outputFormat;
 
-      // Validate theme
+      // Initialize theme manager and validate theme
+      await themeManager.initialize();
       const availableThemes = themeManager.getAvailableThemes();
       if (!availableThemes.includes(theme)) {
         console.error(chalk.red(`Error: Theme '${theme}' not found`));
@@ -153,12 +174,18 @@ program
 program
   .command('themes')
   .description('List available themes')
-  .action(() => {
-    const themes = themeManager.getAvailableThemes();
-    console.log(chalk.blue('Available themes:'));
-    themes.forEach(theme => {
-      console.log(chalk.green(`  • ${theme}`));
-    });
+  .action(async () => {
+    try {
+      await themeManager.initialize();
+      const themes = themeManager.getAvailableThemes();
+      console.log(chalk.blue('Available themes:'));
+      themes.forEach(theme => {
+        console.log(chalk.green(`  • ${theme}`));
+      });
+    } catch (error) {
+      console.error(chalk.red('Error loading themes:'), error);
+      process.exit(1);
+    }
   });
 
 program
