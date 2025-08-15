@@ -1,7 +1,7 @@
 # Contributing
 
 ## Request for changes/ Pull Requests
-You first need to create a fork of the [github-issue-template](https://github.com/jackkeller/cvcraft/) repository to commit your changes to it. Methods to fork a repository can be found in the [GitHub Documentation](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
+You first need to create a fork of the [cvcraft](https://github.com/jackkeller/cvcraft/) repository to commit your changes to it. Methods to fork a repository can be found in the [GitHub Documentation](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 
 Then add your fork as a local project:
 
