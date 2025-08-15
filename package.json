@@ -1,6 +1,6 @@
 {
   "name": "cvcraft",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Markdown to PDF resume converter with theming support",
   "main": "dist/index.js",
   "bin": {
