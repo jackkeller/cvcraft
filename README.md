@@ -8,7 +8,7 @@ CVCraft transforms your markdown resume into beautifully formatted PDFs and Word
 
 ### **Web Interface**
 
-- **Live markdown editor** with syntax highlighting
+- **Live markdown editor**
 - **Real-time HTML preview** - See changes instantly as you type w/ ATS warnings
 - **Theme switching** - Switch between themes with live preview
 - **Auto-save & restore** - Never lose your work with localStorage persistence
