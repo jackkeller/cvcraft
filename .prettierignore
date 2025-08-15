@@ -1,0 +1,9 @@
+dist/
+node_modules/
+coverage/
+*.min.js
+*.min.css
+.env
+.env.local
+.env.*.local
+LICENSE

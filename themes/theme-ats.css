@@ -1,0 +1,299 @@
+/**
+ * ATS-Optimized Theme - Maximum compatibility with Applicant Tracking Systems
+ * 
+ * Features:
+ * - Standard fonts (Arial, Times New Roman, Calibri)
+ * - Simple, single-column layout
+ * - Clear section headers
+ * - Minimal styling to avoid parsing issues
+ * - No graphics, complex tables, or fancy formatting
+ * - Proper semantic structure
+ */
+
+:root {
+  --theme-primary: #000000;
+  --theme-primary-dark: #000000;
+  --theme-primary-light: #333333;
+  --theme-secondary: #333333;
+  --theme-text: #000000;
+  --theme-text-light: #333333;
+  --theme-background: #ffffff;
+  --theme-border: #cccccc;
+  --theme-accent: #f9f9f9;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Scope ATS styles to preview content only */
+.resume-container {
+  font-family: Arial, "Times New Roman", Calibri, sans-serif;
+  font-size: 11pt;
+  line-height: 1.4;
+  color: var(--theme-text);
+  background-color: var(--theme-background);
+  max-width: 8.5in;
+  margin: 0 auto;
+  padding: 0.5in;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Resume container styles are now defined above */
+
+/* Header section - Contact information */
+.header {
+  text-align: left;
+  margin-bottom: 20pt;
+  border-bottom: 1pt solid var(--theme-border);
+  padding-bottom: 10pt;
+}
+
+.header h1 {
+  font-size: 16pt;
+  font-weight: bold;
+  color: var(--theme-primary);
+  margin-bottom: 8pt;
+  text-transform: none;
+}
+
+.contact-info {
+  font-size: 10pt;
+  line-height: 1.3;
+
+  span,
+  p,
+  a {
+    margin: 2pt 4pt;
+  }
+  a {
+    color: var(--theme-text);
+    text-decoration: none;
+  }
+}
+
+
+/* Content sections */
+.content {
+  margin-top: 0;
+}
+
+.content h2 {
+  font-size: 12pt;
+  font-weight: bold;
+  color: var(--theme-primary);
+  margin-top: 16pt;
+  margin-bottom: 8pt;
+  text-transform: uppercase;
+  border-bottom: 1pt solid var(--theme-border);
+  padding-bottom: 2pt;
+}
+
+.content h3 {
+  font-size: 11pt;
+  font-weight: bold;
+  color: var(--theme-text);
+  margin-top: 10pt;
+  margin-bottom: 4pt;
+}
+
+.content h4 {
+  font-size: 10pt;
+  font-weight: bold;
+  color: var(--theme-secondary);
+  margin-top: 6pt;
+  margin-bottom: 2pt;
+}
+
+/* Paragraphs */
+.content p {
+  margin-bottom: 6pt;
+  text-align: left;
+}
+
+/* Lists - Simple bullets only */
+.content ul {
+  margin: 6pt 0 10pt 20pt;
+  padding: 0;
+}
+
+.content li {
+  margin-bottom: 3pt;
+  line-height: 1.3;
+}
+
+/* No fancy list styles - stick to simple bullets */
+.content ul li {
+  list-style-type: disc;
+}
+
+/* Job entries and education entries */
+.job-entry, .education-entry {
+  margin-bottom: 12pt;
+}
+
+.job-title, .degree-title {
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+.company-name, .school-name {
+  font-weight: bold;
+  font-size: 10pt;
+  color: var(--theme-secondary);
+}
+
+.job-dates, .education-dates {
+  font-size: 10pt;
+  color: var(--theme-secondary);
+  font-style: italic;
+}
+
+/* Skills section - Simple list format */
+.skills-section {
+  margin-top: 12pt;
+}
+
+.skills-category {
+  margin-bottom: 6pt;
+}
+
+.skills-category strong {
+  font-weight: bold;
+}
+
+/* Links - Keep simple and readable */
+a {
+  color: var(--theme-text);
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* No complex styling that might confuse ATS */
+.content code,
+.content pre {
+  font-family: "Courier New", monospace;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Tables - Keep very simple if used */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 6pt 0;
+}
+
+th, td {
+  border: 1pt solid var(--theme-border);
+  padding: 4pt 6pt;
+  text-align: left;
+}
+
+th {
+  font-weight: bold;
+  background-color: var(--theme-accent);
+}
+
+/* Print styles - Ensure compatibility */
+@media print {
+  .resume-container {
+    font-size: 10pt;
+    line-height: 1.3;
+    margin: 0;
+    padding: 0.5in;
+    max-width: none;
+    width: 100%;
+  }
+  
+  /* Prevent page breaks in inappropriate places */
+  h1, h2, h3 {
+    page-break-after: avoid;
+    orphans: 3;
+    widows: 3;
+  }
+  
+  .job-entry, .education-entry {
+    page-break-inside: avoid;
+    orphans: 2;
+    widows: 2;
+  }
+  
+  /* Ensure links are readable when printed */
+  a {
+    color: var(--theme-text) !important;
+    text-decoration: underline;
+  }
+  
+  /* Remove any background colors for print */
+  * {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* ATS-specific optimizations */
+.ats-optimized {
+  /* Ensure proper text flow */
+  word-wrap: break-word;
+  hyphens: none;
+  
+  /* No floating elements */
+  float: none;
+  
+  /* Clear positioning */
+  position: static;
+}
+
+/* Section containers for better ATS parsing */
+.resume-section {
+  margin-bottom: 16pt;
+  page-break-inside: avoid;
+}
+
+.resume-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Contact information structured for ATS */
+.contact-item {
+  display: block;
+  margin: 2pt 0;
+}
+
+/* Experience and education structured for ATS */
+.experience-item, .education-item {
+  margin-bottom: 12pt;
+  page-break-inside: avoid;
+}
+
+.item-header {
+  margin-bottom: 4pt;
+}
+
+.item-details {
+  margin-bottom: 6pt;
+}
+
+/* Skills formatting for ATS readability */
+.skills-list {
+  margin: 4pt 0;
+}
+
+.skill-category {
+  margin-bottom: 6pt;
+}
+
+.skill-items {
+  margin-left: 0;
+  padding-left: 0;
+}

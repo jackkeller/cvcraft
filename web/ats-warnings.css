@@ -1,0 +1,137 @@
+/**
+ * ATS Warnings Styling
+ * Styles for the ATS compatibility warnings displayed in the web UI
+ */
+
+:root {
+  --ats-warning-success: #28a745;
+  --ats-warning-success-background: color-mix(in srgb, var(--ats-warning-success), white 80%);
+  --ats-warning-error: #dc3545;
+  --ats-warning-error-background: color-mix(in srgb, var(--ats-warning-error), white 80%);
+  --ats-warning-warning: #ffc107;
+  --ats-warning-warning-background: color-mix(in srgb, var(--ats-warning-warning), white 80%);
+  --ats-warning-info: #17a2b8;
+  --ats-warning-info-background: color-mix(in srgb, var(--ats-warning-info), white 80%);
+  --ats-warning-background: #f8f9fa;
+  --ats-warning-text: #6c757d;
+  --ats-warning-border: #e9ecef;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --ats-warning-success: #28a745;
+    --ats-warning-error: #dc3545;
+    --ats-warning-warning: #ffc107;
+    --ats-warning-info: #17a2b8;
+    --ats-warning-background: #303030;
+    --ats-warning-text: #fff;
+    --ats-warning-border: #212121;
+    --ats-warning-border-bottom: #212121;
+   }
+ } */
+
+.ats-warnings-container {
+  margin: 1rem;
+  padding: 0;
+  border-radius: 8px;
+  background: var(--ats-warning-background);
+  border: 1px solid var(--ats-warning-border);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.ats-warning {
+  padding: 12px 16px;
+  margin: 0;
+  border-left: 4px solid;
+  border-bottom: 1px solid var(--ats-warning-border);
+  font-size: 14px;
+  line-height: 1.4;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  strong {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    color: var(--ats-warning-text);
+    font-size: 13px;
+  }
+
+  /* Success state - no warnings */
+  &.ats-success {
+    border-left-color: var(--ats-warning-success);
+    background: var(--ats-warning-success-background);
+    color: var(--ats-warning-success);
+
+    strong,
+    p {
+      color: var(--ats-warning-success);
+    }
+  }
+
+  /* Warning - important but not critical */
+  &.ats-warning:not(.ats-success):not(.ats-error):not(.ats-info) {
+    border-left-color: var(--ats-warning-warning);
+    color: var(--ats-warning-warning);
+    background: var(--ats-warning-warning-background);
+
+    strong,
+    p {
+      color: var(--ats-warning-warning);
+    }
+  }
+
+  /* Error warnings - critical issues */
+  &.ats-error {
+    border-left-color: var(--ats-warning-error);
+    background: var(--ats-warning-error-background);
+    color: var(--ats-warning-error);
+
+    strong,
+    p {
+      color: var(--ats-warning-error);
+    }
+  }
+
+  /* Info - suggestions and tips */
+  &.ats-info {
+    border-left-color: var(--ats-warning-info);
+    background: var(--ats-warning-info-background);
+
+    strong,
+    p {
+      color: var(--ats-warning-info);
+    }
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .ats-warnings-container {
+    margin: 0.5rem 0;
+    border-radius: 4px;
+  }
+
+  .ats-warning {
+    padding: 10px 12px;
+    font-size: 13px;
+
+    p {
+      font-size: 12px;
+    }
+  }
+}
+
+/* Print styles - hide ATS warnings when printing */
+@media print {
+  .ats-warnings-container {
+    display: none !important;
+  }
+}

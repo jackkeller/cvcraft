@@ -1,0 +1,78 @@
+{
+  "name": "cvcraft",
+  "version": "1.0.0",
+  "description": "Markdown to PDF resume converter with theming support",
+  "main": "dist/index.js",
+  "bin": {
+    "cvcraft": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc && vite build",
+    "build:lib": "tsc",
+    "build:web": "vite build",
+    "start": "node dist/cli.js",
+    "dev": "ts-node src/cli.ts",
+    "web": "concurrently \"bun run api\" \"bun run web:dev\"",
+    "web:dev": "bunx vite",
+    "web:build": "bunx vite build",
+    "web:preview": "bunx vite preview",
+    "api": "ts-node src/api-server.ts",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "coverage": "vitest run --coverage",
+    "prepare": "bun run build:lib",
+    "lint": "eslint src/**/*.ts web/**/*.ts tests/**/*.ts *.ts",
+    "lint:fix": "eslint src/**/*.ts web/**/*.ts tests/**/*.ts *.ts --fix",
+    "format": "prettier --write \"src/**/*.{ts,js,json}\" \"web/**/*.{ts,js,json,html,css}\" \"*.{json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,js,json}\" \"web/**/*.{ts,js,json,html,css}\" \"*.{json,md}\"",
+    "check": "bun run lint && bun run format:check"
+  },
+  "keywords": [
+    "markdown",
+    "pdf",
+    "resume",
+    "converter",
+    "cli"
+  ],
+  "author": "Jack Keller",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "chokidar": "^3.5.3",
+    "commander": "^11.1.0",
+    "docx": "^8.5.0",
+    "express": "^4.18.2",
+    "fs-extra": "^11.1.1",
+    "markdown-it": "^13.0.2",
+    "puppeteer-core": "^21.5.2",
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.20",
+    "@types/fs-extra": "^11.0.3",
+    "@types/html-to-text": "^9.0.4",
+    "@types/markdown-it": "^13.0.7",
+    "@types/node": "^20.8.0",
+    "@types/supertest": "^6.0.3",
+    "@types/ws": "^8.5.8",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitest/coverage-v8": "^1.6.1",
+    "@vitest/ui": "^1.6.1",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0",
+    "supertest": "^7.1.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0",
+    "vitest": "^1.6.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "private": false
+}

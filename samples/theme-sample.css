@@ -1,0 +1,125 @@
+/**
+ * Simple Theme Template - Plain starting point for custom themes
+ * Copy this file to themes/theme-yourname.css and customize as needed
+ */
+
+:root {
+  /* Basic color variables - customize these */
+  --theme-primary: #000000;
+  --theme-secondary: #666666;
+  --theme-text: #000000;
+  --theme-background: #ffffff;
+}
+
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 12pt;
+  line-height: 1.4;
+  color: var(--theme-text);
+  background-color: var(--theme-background);
+}
+
+.resume-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header section */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: 24pt;
+    color: var(--theme-primary);
+    margin-bottom: 5px;
+  }
+
+  .subtitle {
+    font-size: 14pt;
+    color: var(--theme-secondary);
+    margin-bottom: 10px;
+  }
+
+  .contact-info {
+    font-size: 11pt;
+    color: var(--theme-secondary);
+
+    a {
+      color: var(--theme-primary);
+      text-decoration: none;
+    }
+  }
+}
+
+/* Content sections */
+.content {
+  h1 {
+    font-size: 16pt;
+    color: var(--theme-primary);
+    margin: 20px 0 10px 0;
+    border-bottom: 1px solid var(--theme-primary);
+    padding-bottom: 2px;
+  }
+
+  h2 {
+    font-size: 14pt;
+    color: var(--theme-text);
+    margin: 15px 0 8px 0;
+  }
+
+  h3 {
+    font-size: 12pt;
+    color: var(--theme-primary);
+    margin: 12px 0 5px 0;
+  }
+
+  p {
+    margin-bottom: 8px;
+  }
+
+  ul, ol {
+    margin: 8px 0 12px 20px;
+  }
+
+  li {
+    margin-bottom: 3px;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  a {
+    color: var(--theme-primary);
+    text-decoration: underline;
+  }
+}
+
+/* Print styles */
+@media print {
+  .resume-container {
+    padding: 0;
+    max-width: none;
+  }
+  
+  /* Keep headings with content */
+  .content h1,
+  .content h2,
+  .content h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+}

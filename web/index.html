@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CVCraft - Markdown Resume Editor</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./ats-warnings.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="app-header">
+        <h1>CVCraft - Markdown Resume Editor</h1>
+        <p>Create professional resumes from markdown with live preview</p>
+      </header>
+
+      <main class="editor-layout">
+        <div class="editor-panel">
+          <div class="editor-header">
+            <h2>Markdown Editor</h2>
+            <div class="editor-actions">
+              <button id="clear-btn" class="btn btn-small">Clear</button>
+              <button id="clear-saved-btn" class="btn btn-small btn-secondary">
+                Clear Saved
+              </button>
+              <button id="load-sample-btn" class="btn btn-small">
+                Load Sample
+              </button>
+            </div>
+          </div>
+          <div class="editor-container">
+            <textarea
+              id="markdown-editor"
+              placeholder="Start typing your resume in markdown..."
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="preview-panel">
+          <div class="preview-header">
+            <h2>Live Preview</h2>
+            <div class="preview-actions">
+              <select id="theme-selector" class="theme-select">
+                <option value="">Loading themes...</option>
+              </select>
+              <button
+                id="customize-theme-btn"
+                class="btn btn-small btn-secondary"
+                style="display: none"
+              >
+                🎨 Customize
+              </button>
+              <button
+                id="refresh-themes-btn"
+                class="btn btn-small btn-secondary"
+                title="Refresh themes"
+              >
+                🔄
+              </button>
+            </div>
+          </div>
+          <div class="preview-container">
+            <div id="preview-content" class="preview-content"></div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="app-footer">
+        <div class="export-section">
+          <h3>Export Options</h3>
+          <div class="export-controls">
+            <select id="format-selector" class="format-select">
+              <option value="Letter">Letter</option>
+              <option value="A4">A4</option>
+            </select>
+            <button id="generate-pdf-btn" class="btn btn-primary">
+              <span class="btn-text">📄 Generate PDF</span>
+              <span class="btn-loading" style="display: none"
+                >Generating...</span
+              >
+            </button>
+            <button id="generate-word-btn" class="btn btn-secondary">
+              <span class="btn-text">📝 Generate Word</span>
+              <span class="btn-loading" style="display: none"
+                >Generating...</span
+              >
+            </button>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Toast notifications -->
+    <div id="toast-container"></div>
+
+    <!-- Theme Customization Modal -->
+    <div id="theme-customization-modal" class="modal" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Customize Theme</h3>
+          <button id="close-modal-btn" class="btn btn-small btn-secondary">
+            ×
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="customization-options">
+            <!-- Dynamic customization options will be inserted here -->
+          </div>
+          <div class="modal-actions">
+            <button
+              id="reset-customization-btn"
+              class="btn btn-small btn-secondary"
+            >
+              Reset to Default
+            </button>
+            <button
+              id="apply-customization-btn"
+              class="btn btn-small btn-primary"
+            >
+              Apply Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

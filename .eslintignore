@@ -1,0 +1,7 @@
+dist/
+node_modules/
+coverage/
+*.min.js
+.eslintrc.js
+.prettierrc.js
+vite.config.ts

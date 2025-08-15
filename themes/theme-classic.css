@@ -1,0 +1,273 @@
+/**
+ * Classic Theme - Traditional professional styling
+ */
+
+:root {
+  --theme-primary: #2c3e50;
+  --theme-primary-dark: #1a252f;
+  --theme-primary-light: #34495e;
+  --theme-secondary: #7f8c8d;
+  --theme-text: #2c3e50;
+  --theme-text-light: #7f8c8d;
+  --theme-background: #ffffff;
+  --theme-border: #bdc3c7;
+  --theme-accent: #ecf0f1;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--theme-text);
+  background-color: var(--theme-background);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.resume-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background: var(--theme-background);
+}
+
+/* Header styles */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--theme-primary);
+
+  h1 {
+    font-size: 2.2rem;
+    color: var(--theme-primary);
+    margin-bottom: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: var(--theme-secondary);
+    font-style: italic;
+    margin-bottom: 15px;
+  }
+
+  .contact-info {
+    font-size: 0.9rem;
+    color: var(--theme-text-light);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    a {
+      color: var(--theme-primary);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* Content sections */
+.content {
+  h1 {
+    font-size: 1.6rem;
+    color: var(--theme-primary);
+    font-weight: bold;
+    margin: 25px 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--theme-border);
+    padding-bottom: 5px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    color: var(--theme-text);
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    color: var(--theme-primary);
+    font-weight: bold;
+    margin: 15px 0 8px 0;
+  }
+
+  h4 {
+    font-size: 1rem;
+    color: var(--theme-secondary);
+    font-weight: bold;
+    margin: 12px 0 5px 0;
+  }
+
+  p {
+    margin-bottom: 10px;
+    text-align: justify;
+    line-height: 1.6;
+  }
+
+  ul, ol {
+    margin: 8px 0 12px 20px;
+  }
+
+  li {
+    margin-bottom: 4px;
+  }
+
+  strong {
+    color: var(--theme-primary);
+    font-weight: bold;
+  }
+
+  em {
+    color: var(--theme-secondary);
+    font-style: italic;
+  }
+
+  a {
+    color: var(--theme-primary);
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--theme-primary-dark);
+    }
+  }
+}
+
+/* Code and technical elements */
+.content code {
+  background: var(--theme-accent);
+  color: var(--theme-primary-dark);
+  padding: 2px 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.content pre {
+  background: var(--theme-accent);
+  padding: 12px;
+  border: 1px solid var(--theme-border);
+  overflow-x: auto;
+  margin: 15px 0;
+}
+
+.content pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Blockquotes */
+.content blockquote {
+  border-left: 3px solid var(--theme-primary);
+  padding-left: 15px;
+  margin: 15px 0;
+  font-style: italic;
+  color: var(--theme-secondary);
+}
+
+/* Tables */
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  border: 2px solid var(--theme-primary);
+}
+
+.content th,
+.content td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--theme-border);
+}
+
+.content th {
+  background: var(--theme-primary);
+  color: white;
+  font-weight: bold;
+}
+
+/* Print optimizations */
+@media print {
+  .resume-container {
+    padding: 20px;
+    max-width: none;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .content h1 {
+    font-size: 1.4rem;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  
+  .content h2 {
+    font-size: 1.2rem;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  
+  .content h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  
+  .content h4 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  
+  /* Keep headings with their following content */
+  .content h1,
+  .content h2,
+  .content h3,
+  .content h4 {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  /* Keep list items together */
+  .content ul,
+  .content ol {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  .content li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  .content a {
+    color: var(--theme-text) !important;
+    text-decoration: none !important;
+  }
+  
+  .content a[href^="mailto:"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: var(--theme-text-light);
+  }
+  
+  .content a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: var(--theme-text-light);
+  }
+}
