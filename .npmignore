@@ -1,0 +1,37 @@
+# Source files (only publish built dist/)
+src/
+tests/
+coverage/
+temp/
+
+# Development files
+.env
+.env.example
+*.log
+*.tgz
+
+# IDE and OS files
+.DS_Store
+.vscode/
+.idea/
+
+# Build artifacts not needed for distribution
+node_modules/
+.git/
+
+# Development configs
+.eslintrc.js
+.eslintignore
+.prettierrc.js
+.prettierignore
+vitest.config.ts
+vite.config.ts
+tsconfig.json
+
+# Keep these files for users:
+# README.md
+# LICENSE
+# package.json
+# dist/
+# themes/
+# samples/
