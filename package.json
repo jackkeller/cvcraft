@@ -3,6 +3,10 @@
   "version": "1.0.5",
   "description": "Markdown to PDF resume converter with theming support",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackkeller/cvcraft.git"
+  },
   "bin": {
     "cvcraft": "./dist/cli.js"
   },
