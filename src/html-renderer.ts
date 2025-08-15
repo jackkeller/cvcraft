@@ -9,8 +9,8 @@ export class HTMLRenderer {
   private themeManager: ThemeManager;
   private initialized: boolean = false;
 
-  constructor() {
-    this.themeManager = new ThemeManager();
+  constructor(themeManager?: ThemeManager) {
+    this.themeManager = themeManager || new ThemeManager();
   }
 
   /**

@@ -11,8 +11,8 @@ import { CSSThemeManager } from './css-theme-manager';
 export class PDFRenderer {
   private cssThemeManager: CSSThemeManager;
 
-  constructor() {
-    this.cssThemeManager = new CSSThemeManager();
+  constructor(cssThemeManager?: CSSThemeManager) {
+    this.cssThemeManager = cssThemeManager || new CSSThemeManager();
   }
 
   async initialize(): Promise<void> {

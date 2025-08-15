@@ -145,17 +145,21 @@ program
         }
       } else {
         // Convert to PDF
-        await convertMarkdownToPDF(markdownContent, {
-          theme,
-          outputPath: output,
-          format,
-          margins: {
-            top: marginTop,
-            right: marginRight,
-            bottom: marginBottom,
-            left: marginLeft,
+        await convertMarkdownToPDF(
+          markdownContent,
+          {
+            theme,
+            outputPath: output,
+            format,
+            margins: {
+              top: marginTop,
+              right: marginRight,
+              bottom: marginBottom,
+              left: marginLeft,
+            },
           },
-        });
+          cssThemeManager
+        );
       }
 
       console.log(
