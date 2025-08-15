@@ -15,8 +15,8 @@ import { config } from './config';
 
 interface CLIOptions {
   theme?: string;
-  format?: 'A4' | 'Letter';
-  outputFormat?: 'pdf' | 'word' | 'docx';
+  format?: string;
+  pageFormat?: 'A4' | 'Letter';
   marginTop?: string;
   marginRight?: string;
   marginBottom?: string;
@@ -47,7 +47,7 @@ const themeManager = new ThemeManager(cssThemeManager);
 
 program
   .name(config.getCliName())
-  .description('Convert markdown resumes to beautiful PDFs')
+  .description('Convert markdown resumes to beautiful PDFs or Word Documents')
   .version(config.getVersion());
 
 program
@@ -56,8 +56,12 @@ program
   .argument('<input>', 'Input markdown file')
   .argument('<output>', 'Output file (PDF or Word)')
   .option('-t, --theme <theme>', 'Theme to use for styling', 'modern')
-  .option('-f, --format <format>', 'PDF format (A4 or Letter)', 'A4')
-  .option('--output-format <format>', 'Output format (pdf, word, docx)', 'pdf')
+  .option(
+    '-f, --format <format>',
+    'Output format (pdf, word, docx) or PDF page format (A4, Letter)',
+    'pdf'
+  )
+  .option('--page-format <format>', 'PDF page format (A4 or Letter)', 'A4')
   .option('--margin-top <margin>', 'Top margin', '20mm')
   .option('--margin-right <margin>', 'Right margin', '20mm')
   .option('--margin-bottom <margin>', 'Bottom margin', '20mm')
@@ -72,12 +76,35 @@ program
 
       // Set defaults for optional values
       const theme = options.theme || 'modern';
-      const format = options.format || 'Letter';
-      const outputFormat = options.outputFormat || 'pdf';
+      const pageFormat = options.pageFormat || 'A4';
+      let outputFormat = 'pdf';
       const marginTop = options.marginTop || '20mm';
       const marginRight = options.marginRight || '20mm';
       const marginBottom = options.marginBottom || '20mm';
       const marginLeft = options.marginLeft || '20mm';
+
+      // Determine output format from --format option or file extension
+      if (options.format) {
+        const formatLower = options.format.toLowerCase();
+        if (['word', 'docx'].includes(formatLower)) {
+          outputFormat = 'word';
+        } else if (formatLower === 'pdf') {
+          outputFormat = 'pdf';
+        } else if (['a4', 'letter'].includes(formatLower)) {
+          // Legacy: treat A4/Letter as PDF page format
+          outputFormat = 'pdf';
+        } else {
+          outputFormat = formatLower;
+        }
+      } else {
+        // Auto-detect from file extension if no format specified
+        const ext = path.extname(output).toLowerCase();
+        if (ext === '.docx') {
+          outputFormat = 'word';
+        } else if (ext === '.pdf') {
+          outputFormat = 'pdf';
+        }
+      }
 
       // Validate output format
       if (!['pdf', 'word', 'docx'].includes(outputFormat)) {
@@ -127,7 +154,7 @@ program
           const parsedContent = parser.parse(markdownContent);
 
           // Render to HTML
-          const htmlRenderer = new HTMLRenderer();
+          const htmlRenderer = new HTMLRenderer(themeManager);
           const htmlContent = await htmlRenderer.render(parsedContent, theme);
 
           // Convert to Word using docx library
@@ -150,7 +177,7 @@ program
           {
             theme,
             outputPath: output,
-            format,
+            format: pageFormat,
             margins: {
               top: marginTop,
               right: marginRight,
