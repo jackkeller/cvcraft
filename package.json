@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/jackkeller/cvcraft.git"
   },
+  "publishConfig": {
+  "registry": "https://registry.npmjs.org"
+},
   "bin": {
     "cvcraft": "./dist/cli.js"
   },
