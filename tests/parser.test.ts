@@ -18,7 +18,7 @@ describe('MarkdownParser', () => {
       const markdown = `---
 name: John Doe
 email: john@example.com
-phone: (555) 123-4567
+phone: 555-123-4567
 ---
 
 # Resume
@@ -30,7 +30,7 @@ Content here.`;
       expect(result.metadata).toEqual({
         name: 'John Doe',
         email: 'john@example.com',
-        phone: '(555) 123-4567',
+        phone: '555-123-4567',
       });
       expect(result.html).toContain('<h1>Resume</h1>');
       expect(result.html).not.toContain('---');

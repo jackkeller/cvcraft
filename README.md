@@ -256,18 +256,20 @@ cvcraft/
 ---
 name: 'Jane Smith'
 email: 'jane@example.com'
-phone: '+1 (555) 123-4567'
+phone: '555-123-4567'
 website: 'https://janesmith.dev'
 ---
 
 ## Experience
 
 **Senior Software Engineer** | Tech Corp | 2021-2024
+
 - Led development of microservices architecture
 - Mentored junior developers and conducted code reviews
 - Improved system performance by 40%
 
 **Software Engineer** | StartupCo | 2019-2021
+
 - Built responsive web applications using React and Node.js
 - Collaborated with design team on user experience improvements
 

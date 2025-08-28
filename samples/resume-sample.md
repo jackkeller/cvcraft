@@ -1,7 +1,7 @@
 ---
 name: John Doe
 email: john.doe@example.com
-phone: (555) 123-4567
+phone: 555-123-4567
 location: San Francisco, CA
 ---
 

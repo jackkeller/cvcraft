@@ -20,7 +20,7 @@ describe('HTMLRenderer', () => {
         metadata: {
           name: 'John Doe',
           email: 'john@example.com',
-          phone: '(555) 123-4567',
+          phone: '555-123-4567',
         },
         sections: [],
       };
@@ -31,7 +31,7 @@ describe('HTMLRenderer', () => {
       expect(html).toContain('<title>John Doe</title>');
       expect(html).toContain('<h1>John Doe</h1>');
       expect(html).toContain('john@example.com');
-      expect(html).toContain('(555) 123-4567');
+      expect(html).toContain('555-123-4567');
     });
 
     it('should handle metadata without name', async () => {
