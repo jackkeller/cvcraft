@@ -1,6 +1,6 @@
 {
   "name": "cvcraft",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Markdown to PDF or Word resume converter with theming support",
   "main": "dist/index.js",
   "repository": {
