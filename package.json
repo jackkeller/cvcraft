@@ -8,7 +8,8 @@
     "url": "https://github.com/jackkeller/cvcraft.git"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "bin": {
     "cvcraft": "./dist/cli.js"
@@ -38,7 +39,7 @@
     "version": "changeset version",
     "release": "bun run build && changeset publish",
     "release:dual": "bun run release && bun run release:github",
-    "release:github": "npm pkg set name=@jackkeller/cvcraft && npm publish --registry=https://npm.pkg.github.com && npm pkg set name=cvcraft"
+    "release:github": "npm pkg set name=@jackkeller/cvcraft && npm pkg set publishConfig.registry=https://npm.pkg.github.com && npm publish && npm pkg set name=cvcraft && npm pkg set publishConfig.registry=https://registry.npmjs.org"
   },
   "keywords": [
     "markdown",
