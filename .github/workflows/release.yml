@@ -32,6 +32,11 @@ jobs:
       - name: Install Dependencies
         run: bun install
 
+      - name: Setup npmrc for GitHub Packages
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
+          echo "@jackkeller:registry=https://npm.pkg.github.com" >> ~/.npmrc
+
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
