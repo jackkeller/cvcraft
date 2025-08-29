@@ -1,5 +1,5 @@
 {
-  "name": "jackkeller/cvcraft",
+  "name": "cvcraft",
   "version": "1.0.9",
   "description": "Markdown to PDF or Word resume converter with theming support",
   "main": "dist/index.js",
@@ -8,7 +8,8 @@
     "url": "https://github.com/jackkeller/cvcraft.git"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "bin": {
     "cvcraft": "./dist/cli.js"
@@ -36,7 +37,9 @@
     "check": "bun run lint && bun run format:check",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "bun run build && changeset publish"
+    "release": "bun run build && changeset publish",
+    "release:dual": "bun run release && bun run release:github",
+    "release:github": "npm pkg set name=@jackkeller/cvcraft && npm pkg set publishConfig.registry=https://npm.pkg.github.com && npm publish && npm pkg set name=cvcraft && npm pkg set publishConfig.registry=https://registry.npmjs.org"
   },
   "keywords": [
     "markdown",
